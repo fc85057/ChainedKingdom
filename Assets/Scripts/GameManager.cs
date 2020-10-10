@@ -1,15 +1,21 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
 
+    public static event Action<int> OnYearChanged = delegate { };
+
     [SerializeField] float yearDuration = 60f;
+
+    [SerializeField] GameObject gameOverScreen;
+    [SerializeField] GameObject pauseScreen;
 
     int year;
     bool gameOver;
+    bool paused;
 
     private void Awake()
     {
@@ -21,7 +27,6 @@ public class GameManager : MonoBehaviour
         WorkerManager.OnPopulationChanged -= GameOverCheck;
     }
 
-    // Start is called before the first frame update
     void Start()
     {
         year = 0;
@@ -30,10 +35,12 @@ public class GameManager : MonoBehaviour
         StartCoroutine(PassTime());
     }
 
-    // Update is called once per frame
     void Update()
     {
-        
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            Pause();
+        }
     }
 
     void GameOverCheck(int population)
@@ -44,24 +51,47 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    IEnumerator GameOver()
-    {
-        gameOver = true;
-        // Set game over screen active
-        // Change time to 0
-        Debug.Log("Game over.");
-        yield return new WaitForSeconds(5f);
-        // SceneManager.LoadScene("MainMenu");
-    }
-
     IEnumerator PassTime()
     {
         while (true)
         {
             year++;
+            OnYearChanged(year);
             yield return new WaitForSeconds(yearDuration);
         }
+
+    }
+
+    IEnumerator GameOver()
+    {
+        gameOver = true;
+        gameOverScreen.SetActive(true);
+        Time.timeScale = 0;
+        Debug.Log("Game over.");
+        yield return new WaitForSeconds(5f);
+        LoadMainMenu();
+    }
+
+    public void Pause()
+    {
+        if (!paused)
+        {
+            paused = true;
+            pauseScreen.SetActive(true);
+            Time.timeScale = 0;
+        }
+        else
+        {
+            paused = false;
+            pauseScreen.SetActive(false);
+            Time.timeScale = 1f;
+        }
         
+    }
+
+    public void LoadMainMenu()
+    {
+        SceneManager.LoadScene("MainMenu");
     }
 
 }

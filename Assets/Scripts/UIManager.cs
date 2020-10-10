@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
+    [SerializeField] Text yearText;
 
     [SerializeField] Text foodText;
     [SerializeField] Text goldText;
@@ -20,6 +21,8 @@ public class UIManager : MonoBehaviour
 
     private void Awake()
     {
+        GameManager.OnYearChanged += ChangeYearText;
+
         WorkerManager.OnPopulationChanged += ChangePopText;
         WorkerManager.OnIdleChanged += ChangeIdleText;
 
@@ -35,6 +38,8 @@ public class UIManager : MonoBehaviour
 
     private void OnDestroy()
     {
+        GameManager.OnYearChanged -= ChangeYearText;
+
         WorkerManager.OnPopulationChanged -= ChangePopText;
         WorkerManager.OnIdleChanged -= ChangeIdleText;
 
@@ -46,6 +51,11 @@ public class UIManager : MonoBehaviour
         ResourceManager.OnFoodChanged -= ChangeFoodText;
         ResourceManager.OnGoldChanged -= ChangeGoldText;
         ResourceManager.OnEquipmentChanged -= ChangeEquipmentText;
+    }
+
+    void ChangeYearText(int year)
+    {
+        yearText.text = "Year" + year.ToString();
     }
 
     void ChangeFoodText(int amount)

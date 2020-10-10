@@ -75,12 +75,11 @@ public class WorkerManager : MonoBehaviour
             StartCoroutine(GraduallyIncreasePopulation());
 
         }
-        else if (food > 1 && food < 100 && populationChanging) // need to stop this from resetting
+        else if (food > 0 && food < 100 && populationChanging)
         {
             Debug.Log("Stopping all coroutines");
             populationChanging = false;
-            StopCoroutine(GraduallyIncreasePopulation());
-            StopCoroutine(GraduallyDecreasePopulation());
+            StopAllCoroutines();
         }
 
     }
@@ -105,6 +104,7 @@ public class WorkerManager : MonoBehaviour
         {
             Debug.Log("Decreasing population by 1");
             DecreasePopulation(1);
+            AdjustWorkers(1);
             yield return new WaitForSeconds(decreasePopulationInterval);
         }
     }
@@ -119,6 +119,45 @@ public class WorkerManager : MonoBehaviour
     {
         population -= amount;
         OnPopulationChanged(population);
+    }
+
+    void AdjustWorkers(int amount)
+    {
+        int workersToRemove = amount;
+        while (workersToRemove != 0)
+        {
+            if (idle > 0)
+            {
+                idle--;
+                workersToRemove--;
+                OnIdleChanged(idle);
+            }
+            else if (soldiers > 0)
+            {
+                soldiers--;
+                workersToRemove--;
+                OnSoldiersChanged(soldiers);
+            }
+            else if (blacksmiths > 0)
+            {
+                blacksmiths--;
+                workersToRemove--;
+                OnBlacksmithsChanged(blacksmiths);
+            }
+            else if (merchants > 0)
+            {
+                merchants--;
+                workersToRemove--;
+                OnMerchantsChanged(merchants);
+            }
+            else if (farmers > 0)
+            {
+                farmers--;
+                workersToRemove--;
+                OnFarmersChanged(farmers);
+            }
+
+        }
     }
 
     #endregion

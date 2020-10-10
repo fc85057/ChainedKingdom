@@ -11,9 +11,12 @@ public class ResourceManager : MonoBehaviour
     public static event Action<int> OnEquipmentChanged = delegate { };
 
     [SerializeField] int workerFoodCost = 1;
+    [SerializeField] int blacksmithGoldCost = 1;
+    [SerializeField] int soldierEquipmentCost = 1;
+
     [SerializeField] float foodCalculationInterval = 5f;
-    [SerializeField] float foodReductionInterval = 5f;
-    [SerializeField] float workerProductionInterval = 1f;
+    [SerializeField] float goldCalculationInterval = 5f;
+    [SerializeField] float equipmentCalculationInterval = 5f;
 
     [SerializeField] int startingFood = 50;
     [SerializeField] int startingGold = 50;
@@ -63,8 +66,6 @@ public class ResourceManager : MonoBehaviour
         OnGoldChanged(gold);
         OnEquipmentChanged(equipment);
 
-        // StartCoroutine(IncreaseFood());
-        // StartCoroutine(DecreaseFood());
         StartCoroutine(ChangeFood());
     }
 
@@ -104,40 +105,55 @@ public class ResourceManager : MonoBehaviour
 
     #region Food
 
-    // Should test this out before doing it for other resources
-
     IEnumerator ChangeFood()
     {
         while (true)
         {
-            Debug.Log("Food before calculation: " + food.ToString());
             food += ((farmers * foodGenerated) - (population * workerFoodCost));
+            if (food < 0)
+            {
+                food = 0;
+            }
             OnFoodChanged(food);
-            Debug.Log("Food after calculation: " + food.ToString());
             yield return new WaitForSeconds(foodCalculationInterval);
         }
     }
 
-    // Not thread safe so this won't work
+    #endregion
 
-    IEnumerator IncreaseFood()
+    #region Gold
+
+    IEnumerator ChangeGold()
     {
         while (true)
         {
-            food += (farmers * foodGenerated);
-            OnFoodChanged(food);
-            yield return new WaitForSeconds(workerProductionInterval);
+            gold += ((merchants * goldGenerated) - (blacksmiths * blacksmithGoldCost));
+            if (gold < 0)
+            {
+                gold = 0;
+            }
+            OnGoldChanged(gold);
+            yield return new WaitForSeconds(goldCalculationInterval);
         }
     }
 
-    IEnumerator DecreaseFood()
+    #endregion
+
+    #region Equipment
+
+    IEnumerator ChangeEquipment()
     {
         while (true)
         {
-            food -= (population * workerFoodCost);
-            OnFoodChanged(food);
-            yield return new WaitForSeconds(foodReductionInterval);
+            equipment += ((blacksmiths * equipmentGenerated) - (soldiers * soldierEquipmentCost));
+            if (equipment < 0)
+            {
+                equipment = 0;
+            }
+            OnEquipmentChanged(equipment);
+            yield return new WaitForSeconds(equipmentCalculationInterval);
         }
+
     }
 
     #endregion
