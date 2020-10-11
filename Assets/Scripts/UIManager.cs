@@ -19,6 +19,11 @@ public class UIManager : MonoBehaviour
     [SerializeField] Text blacksmithText;
     [SerializeField] Text soldierText;
 
+    [SerializeField] GameObject farmer;
+    [SerializeField] GameObject merchant;
+    [SerializeField] GameObject blacksmith;
+    [SerializeField] GameObject soldier;
+
     private void Awake()
     {
         GameManager.OnYearChanged += ChangeYearText;
@@ -55,7 +60,7 @@ public class UIManager : MonoBehaviour
 
     void ChangeYearText(int year)
     {
-        yearText.text = "Year" + year.ToString();
+        yearText.text = "Year " + year.ToString();
     }
 
     void ChangeFoodText(int amount)
@@ -86,21 +91,37 @@ public class UIManager : MonoBehaviour
     void ChangeFarmerText(int amount)
     {
         farmerText.text = amount.ToString();
+        SetWorkerGraphic(farmer, amount);
     }
 
     void ChangeMerchantText(int amount)
     {
         merchantText.text = amount.ToString();
+        SetWorkerGraphic(merchant, amount);
     }
     
     void ChangeBlacksmithText(int amount)
     {
         blacksmithText.text = amount.ToString();
+        SetWorkerGraphic(blacksmith, amount);
     }
 
     void ChangeSoldierText(int amount)
     {
         soldierText.text = amount.ToString();
+        SetWorkerGraphic(soldier, amount);
+    }
+
+    void SetWorkerGraphic(GameObject worker, int number)
+    {
+        if (number == 0)
+        {
+            worker.SetActive(false);
+        }
+        else
+        {
+            worker.SetActive(true);
+        }
     }
 
 }

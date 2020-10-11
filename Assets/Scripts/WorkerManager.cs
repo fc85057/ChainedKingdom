@@ -26,12 +26,16 @@ public class WorkerManager : MonoBehaviour
     int soldiers;
 
     int food;
+    int gold;
+    int equipment;
     bool populationChanging;
 
     private void Awake()
     {
         WorkerButton.OnWorkerChanged += HandleOnWorkerChanged;
         ResourceManager.OnFoodChanged += UpdateFood;
+        ResourceManager.OnGoldChanged += UpdateGold;
+        ResourceManager.OnEquipmentChanged += UpdateEquipment;
     }
 
     private void Start()
@@ -86,6 +90,32 @@ public class WorkerManager : MonoBehaviour
 
     #endregion
 
+    #region Gold
+
+    void UpdateGold(int amount)
+    {
+        gold = amount;
+        if (gold < 1)
+        {
+            RemoveBlacksmith(blacksmiths);
+        }
+    }
+
+    #endregion
+
+    #region Equipment
+
+    void UpdateEquipment(int amount)
+    {
+        equipment = amount;
+        if (equipment < 1)
+        {
+            RemoveSoldier(soldiers);
+        }
+    }
+
+    #endregion
+
     #region Population
 
     IEnumerator GraduallyIncreasePopulation()
@@ -104,7 +134,7 @@ public class WorkerManager : MonoBehaviour
         {
             Debug.Log("Decreasing population by 1");
             DecreasePopulation(1);
-            AdjustWorkers(1);
+            // AdjustWorkers(1);
             yield return new WaitForSeconds(decreasePopulationInterval);
         }
     }
@@ -112,13 +142,16 @@ public class WorkerManager : MonoBehaviour
     void IncreasePopulation(int amount)
     {
         population += amount;
+        idle += amount;
         OnPopulationChanged(population);
+        OnIdleChanged(idle);
     }
 
     void DecreasePopulation(int amount)
     {
         population -= amount;
         OnPopulationChanged(population);
+        AdjustWorkers(amount);
     }
 
     void AdjustWorkers(int amount)
@@ -200,8 +233,8 @@ public class WorkerManager : MonoBehaviour
                     return;
             }
 
-            idle -= 1;
-
+            // idle -= 1;
+            // OnIdleChanged(idle);
         }
         else
         {
@@ -232,8 +265,6 @@ public class WorkerManager : MonoBehaviour
             }
 
         }
-
-        OnIdleChanged(idle);
     }
 
     #endregion
@@ -243,7 +274,9 @@ public class WorkerManager : MonoBehaviour
     public void AddFarmer(int amount)
     {
         farmers += amount;
+        idle -= amount;
         OnFarmersChanged(farmers);
+        OnIdleChanged(idle);
     }
 
     public void RemoveFarmer(int amount)
@@ -257,6 +290,7 @@ public class WorkerManager : MonoBehaviour
             }
         }
         OnFarmersChanged(farmers);
+        OnIdleChanged(idle);
     }
 
     #endregion
@@ -266,7 +300,9 @@ public class WorkerManager : MonoBehaviour
     public void AddMerchant(int amount)
     {
         merchants += amount;
+        idle -= amount;
         OnMerchantsChanged(merchants);
+        OnIdleChanged(idle);
     }
 
     public void RemoveMerchant(int amount)
@@ -280,6 +316,7 @@ public class WorkerManager : MonoBehaviour
             }
         }
         OnMerchantsChanged(merchants);
+        OnIdleChanged(idle);
     }
 
     #endregion
@@ -288,8 +325,12 @@ public class WorkerManager : MonoBehaviour
 
     public void AddBlacksmith(int amount)
     {
+        if (gold < 1)
+            return;
         blacksmiths += amount;
+        idle -= amount;
         OnBlacksmithsChanged(blacksmiths);
+        OnIdleChanged(idle);
     }
 
     public void RemoveBlacksmith(int amount)
@@ -303,6 +344,7 @@ public class WorkerManager : MonoBehaviour
             }
         }
         OnBlacksmithsChanged(blacksmiths);
+        OnIdleChanged(idle);
     }
 
     #endregion
@@ -311,8 +353,12 @@ public class WorkerManager : MonoBehaviour
 
     public void AddSoldier(int amount)
     {
+        if (equipment < 1)
+            return;
         soldiers += amount;
+        idle -= amount;
         OnSoldiersChanged(soldiers);
+        OnIdleChanged(idle);
     }
 
     public void RemoveSoldier(int amount)
@@ -326,6 +372,7 @@ public class WorkerManager : MonoBehaviour
             }
         }
         OnSoldiersChanged(soldiers);
+        OnIdleChanged(idle);
     }
 
     #endregion

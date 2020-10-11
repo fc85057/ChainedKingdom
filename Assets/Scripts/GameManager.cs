@@ -66,7 +66,6 @@ public class GameManager : MonoBehaviour
     {
         gameOver = true;
         gameOverScreen.SetActive(true);
-        Time.timeScale = 0;
         Debug.Log("Game over.");
         yield return new WaitForSeconds(5f);
         LoadMainMenu();
@@ -74,6 +73,9 @@ public class GameManager : MonoBehaviour
 
     public void Pause()
     {
+        if (gameOver)
+            return;
+
         if (!paused)
         {
             paused = true;

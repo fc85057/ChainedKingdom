@@ -67,6 +67,8 @@ public class ResourceManager : MonoBehaviour
         OnEquipmentChanged(equipment);
 
         StartCoroutine(ChangeFood());
+        StartCoroutine(ChangeGold());
+        StartCoroutine(ChangeEquipment());
     }
 
     #region UpdateWorkers
