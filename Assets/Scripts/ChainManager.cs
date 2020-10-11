@@ -125,12 +125,19 @@ public class ChainManager : MonoBehaviour
         equipment = amount;
     }
 
+    void UpdateYear(int currentYear)
+    {
+        year = currentYear;
+    }
+
     #endregion
 
     #region ChooseScenarios
 
     void HandleOnYearChanged(int year)
     {
+        // if (year == 1) return;
+        UpdateYear(year);
         currentScenario = DrawScenario();
         HandleScenario();
     }
@@ -205,20 +212,6 @@ public class ChainManager : MonoBehaviour
 
     #region PlayScenarios
 
-    // ACTUALLY DO NEED TO HANDLE WAR SEPERATELY
-
-    /*
-    void WarScenario()
-    {
-        Debug.Log("War is happening");
-        scenarioText.text = warScenario.ScenarioText;
-        choiceOneText.text = warScenario.ChoiceOneText;
-        choiceTwoText.text = warScenario.ChoiceTwoText;
-
-        choicePanel.SetActive(true);
-    }
-    */
-
     void HandleScenario()
     {
         scenarioText.text = currentScenario.ScenarioText;
@@ -231,11 +224,97 @@ public class ChainManager : MonoBehaviour
 
     #endregion
 
+    #region War
+
+    void HandleWar(int choice)
+    {
+        if (choice == 1)
+        {
+            Fight();
+        }
+        else
+        {
+            DontFight();
+        }
+    }
+
+    void Fight()
+    {
+        if (soldiers <= 0)
+        {
+            LoseAllResources();
+            return;
+        }
+
+        int enemySoldiers = (int)(year / 2.0f + 1);
+        Debug.Log("The number of enemy soldiers is " + enemySoldiers.ToString());
+        if (soldiers >= enemySoldiers)
+        {
+            WinWar();
+        }
+        else
+        {
+            LoseWar();
+        }
+    }
+
+    void LoseAllResources()
+    {
+        outcomeText.text = "You decided to fight.\n" +
+            "It was the shortest battle in history since...we don't have an army.\n" +
+            "The enemy storms their way throughout the kingdom. " +
+            "They take everything that isn't nailed down.\n" +
+            "Actually, even some of the stuff that was nailed down.";
+        choicePanel.SetActive(false);
+        outcomePanel.SetActive(true);
+        resourceManager.RemoveGold(100);
+        resourceManager.RemoveEquipment(100);
+    }
+
+    void WinWar()
+    {
+        outcomeText.text = "You decided to fight.\n" +
+            "Our soldiers put up a valiant effort." +
+            "The enemy is no match for our army." +
+            "In other words, we kicked their ass." +
+            "We live to fight another day.";
+        choicePanel.SetActive(false);
+        outcomePanel.SetActive(true);
+    }
+
+    void LoseWar()
+    {
+        int soldiersLost = Random.Range(1, soldiers);
+        outcomeText.text = "You decided to fight.\n" +
+            "Our soldiers fought as hard as they could." +
+            "Alas, the enemy was just too strong." +
+            "In other words, we got our ass handed to us." +
+            soldiersLost + " of our soldiers died.";
+        workerManager.RemoveSoldier(soldiersLost);
+        workerManager.DecreasePopulation(soldiersLost);
+        choicePanel.SetActive(false);
+        outcomePanel.SetActive(true);
+    }
+
+    // Should handle all no fighting scenarios
+    // Need to add all don't fight options to choice two
+
+    void DontFight()
+    {
+        DrawOutcome(2);
+    }
+
+    #endregion
+
     #region Outcomes
 
     public void HandleOutcome(int choice)
     {
-        if (choice == 1)
+        if (currentScenario == warScenario)
+        {
+            HandleWar(choice);
+        }
+        else if (choice == 1)
         {
             DrawOutcome(1);
         }

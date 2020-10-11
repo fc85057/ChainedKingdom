@@ -16,6 +16,10 @@ MonoBehaviour:
   Minimum: 2
   OutcomeType: 7
   OutcomeNumber: 1
-  OutcomeText: You decide against opening a new tavern.\\nSome of the townsfolk are
-    displeased by this decision.\\nOne of them in particular grows bored of life here.\\nOne
-    of our workers decides to move to a kingdom with beer.
+  OutcomeText: 'You decide against opening a new tavern.
+
+    Some of the townsfolk are displeased by this decision.
+
+    One of them in particular grows bored of life here.
+
+    One of our workers decides to move to a kingdom with beer.'

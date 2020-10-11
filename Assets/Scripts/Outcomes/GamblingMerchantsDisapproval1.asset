@@ -10,18 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 67241a8a5538db74382041b2881cccbf, type: 3}
-  m_Name: DrunkBlacksmithNoPunishment1
+  m_Name: GamblingMerchantsDisapproval1
   m_EditorClassIdentifier: 
-  Prerequisite: 6
-  Minimum: 1
-  OutcomeType: 14
-  OutcomeNumber: 1
-  OutcomeText: 'You decide not to punish the blacksmith.
+  Prerequisite: 5
+  Minimum: 2
+  OutcomeType: 9
+  OutcomeNumber: 2
+  OutcomeText: 'You decide to chastise the merchants for gambling.
 
-    With no fear of punishment, he continues his drunken ways.
+    They begrudingly oblige.
 
-    One day, he gets into another bar brawl.
+    Unable to gamble, they find themselves becoming bored.
 
-    But this time, the genius picked a fight with a soldier.
-
-    We are now short one blacksmith.'
+    Some of them decide to quit working in protest.'

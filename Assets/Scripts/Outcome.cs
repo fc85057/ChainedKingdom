@@ -17,6 +17,6 @@ public class Outcome : ScriptableObject
 
     [SerializeField] public OutcomeEnum OutcomeType;
     [SerializeField] public int OutcomeNumber;
-    [SerializeField] public string OutcomeText;
+    [SerializeField] [TextArea] public string OutcomeText;
 
 }

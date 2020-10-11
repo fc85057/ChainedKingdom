@@ -16,5 +16,10 @@ MonoBehaviour:
   Minimum: 0
   OutcomeType: 2
   OutcomeNumber: 20
-  OutcomeText: You have decided to open a new tavern.\\nThe townsfolk work hard building
-    it.\\nIt improves to be immensely popular.\\nOur treasury sees a big boost!
+  OutcomeText: 'You have decided to open a new tavern.
+
+    The townsfolk work hard building it.
+
+    It proves to be immensely popular.
+
+    Our treasury sees a big boost!'

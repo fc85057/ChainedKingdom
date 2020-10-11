@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fbf35b6983fd470458d7a9a8de827680, type: 3}
+  m_Name: GamblingMerchants
+  m_EditorClassIdentifier: 
+  Prerequisite: 5
+  Minimum: 1
+  ScenarioText: It appears that some of our merchants have been gambling. What shall
+    we do?
+  ChoiceOneText: Place a bet for me too!
+  ChoiceTwoText: Such vices are unacceptable in our kingdom.
+  ChoiceOneOutcomes:
+  - {fileID: 11400000, guid: d60b145bee1d9804e8936e747df4b2c6, type: 2}
+  - {fileID: 11400000, guid: 6b3cc2e85830ed44e9c75ae199508341, type: 2}
+  ChoiceTwoOutcomes:
+  - {fileID: 11400000, guid: 6fb8bc88c1b3f5745b114a349c0a3781, type: 2}
+  - {fileID: 11400000, guid: c6d371e8133239f4e921463f98123419, type: 2}

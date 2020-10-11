@@ -16,6 +16,10 @@ MonoBehaviour:
   Minimum: 0
   OutcomeType: 3
   OutcomeNumber: 20
-  OutcomeText: You have decided to open a new tavern.\\nThe townsfolk work hard to
-    set it up.\\nSome start overindulging and developing alcoholism.\\nThey steal
-    from the treasury to pay for their habit.
+  OutcomeText: 'You have decided to open a new tavern.
+
+    The townsfolk work hard to set it up.
+
+    Some start overindulging and developing alcoholism.
+
+    They steal from the treasury to pay for their habit.'

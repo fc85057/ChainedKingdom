@@ -16,7 +16,12 @@ MonoBehaviour:
   Minimum: 1
   OutcomeType: 4
   OutcomeNumber: 10
-  OutcomeText: You decide to punish the blacksmith.\\nHe is put on display in the
-    stocks.\\nPeople come by and bring him food and water in pity.\\nHumbled by their
-    kindness, the blacksmith quits drinking.\\nHis boost in productivity results in
-    more equipment.
+  OutcomeText: 'You decide to punish the blacksmith.
+
+    He is put on display in the stocks.
+
+    People come by and bring him food and water in pity.
+
+    Humbled by their kindness, the blacksmith quits drinking.
+
+    His boost in productivity results in more equipment.'

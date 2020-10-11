@@ -20,5 +20,7 @@ MonoBehaviour:
   ChoiceTwoText: It could have happened to anyone.
   ChoiceOneOutcomes:
   - {fileID: 11400000, guid: ab76cbf081727254ab7db30c7cbe5b66, type: 2}
+  - {fileID: 11400000, guid: bba0fe1809790cd46935297da5666bc7, type: 2}
   ChoiceTwoOutcomes:
   - {fileID: 11400000, guid: 2a38e66043c73b54e9ed63d82de687aa, type: 2}
+  - {fileID: 11400000, guid: 5ef7b8f4a8c02f347949dcfb457804a1, type: 2}

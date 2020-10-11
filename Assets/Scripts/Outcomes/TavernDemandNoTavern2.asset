@@ -16,6 +16,10 @@ MonoBehaviour:
   Minimum: 0
   OutcomeType: 0
   OutcomeNumber: 20
-  OutcomeText: You decide against opening a new tavern.\\nWhile some are displeased,
-    the members of the temperance movement are thrilled.\\nTheir happiness and productivity
-    increases.\\nOur harvest is extra plentiful.
+  OutcomeText: 'You decide against opening a new tavern.
+
+    While some are displeased, the members of the temperance movement are thrilled.
+
+    Their happiness and productivity increases.
+
+    Our harvest is extra plentiful.'

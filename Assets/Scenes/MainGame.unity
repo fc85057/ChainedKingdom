@@ -13430,7 +13430,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a0067ef8857c929498de333f2f3a988e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  yearDuration: 30
+  yearDuration: 10
   gameOverScreen: {fileID: 478152241}
   pauseScreen: {fileID: 1180273345}
 --- !u!4 &1322393845
@@ -15190,10 +15190,10 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 12800000, guid: 128d657804c4cd846a699bd158aac058, type: 3}
-    m_FontSize: 40
+    m_FontSize: 35
     m_FontStyle: 0
     m_BestFit: 0
-    m_MinSize: 4
+    m_MinSize: 3
     m_MaxSize: 50
     m_Alignment: 3
     m_AlignByGeometry: 0

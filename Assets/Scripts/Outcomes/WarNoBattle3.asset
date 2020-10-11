@@ -10,18 +10,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 67241a8a5538db74382041b2881cccbf, type: 3}
-  m_Name: DrunkBlacksmithNoPunishment1
+  m_Name: WarNoBattle3
   m_EditorClassIdentifier: 
-  Prerequisite: 6
+  Prerequisite: 8
   Minimum: 1
-  OutcomeType: 14
-  OutcomeNumber: 1
-  OutcomeText: 'You decide not to punish the blacksmith.
+  OutcomeType: 16
+  OutcomeNumber: 0
+  OutcomeText: 'You decide not to fight.
 
-    With no fear of punishment, he continues his drunken ways.
+    The enemy storms into town.
 
-    One day, he gets into another bar brawl.
+    These soldiers are a particularly aggressive bunch.
 
-    But this time, the genius picked a fight with a soldier.
+    They kill all those found standing around.
 
-    We are now short one blacksmith.'
+    Only those who were busy at work survived.'

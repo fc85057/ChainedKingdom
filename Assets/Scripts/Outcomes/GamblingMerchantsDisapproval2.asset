@@ -10,11 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 67241a8a5538db74382041b2881cccbf, type: 3}
-  m_Name: WarNoBattle
+  m_Name: GamblingMerchantsDisapproval2
   m_EditorClassIdentifier: 
-  Prerequisite: 1
+  Prerequisite: 2
   Minimum: 0
-  OutcomeType: 3
-  OutcomeNumber: 30
-  OutcomeText: You decide not to fight.\\nThe enemy storms into town.\\nThey destroy
-    various buildings and tools.\\nThis is going to cost us to repair...
+  OutcomeType: 4
+  OutcomeNumber: 15
+  OutcomeText: 'You decide to chastise the merchants for gambling.
+
+    At first, they are displeased with the decision.
+
+    But they come to realize that it was the right call.
+
+    They return equipment that they had stolen to repay their debts.'

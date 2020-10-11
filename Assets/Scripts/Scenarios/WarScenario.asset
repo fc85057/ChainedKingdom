@@ -17,8 +17,10 @@ MonoBehaviour:
   ScenarioText: The enemy approaches! What shall we do?
   ChoiceOneText: They'll never take our freedom! (Fight)
   ChoiceTwoText: I'm a pacifist. (Get Ransacked)
-  ChoiceOneOutcomes:
-  - {fileID: 11400000, guid: 85304dd029a897848943d70a36adeb58, type: 2}
-  - {fileID: 11400000, guid: d8554b26702ea0d47aa7f0237c59d8d0, type: 2}
+  ChoiceOneOutcomes: []
   ChoiceTwoOutcomes:
   - {fileID: 11400000, guid: 435e5a7238112bf4b9b56ae3674666e0, type: 2}
+  - {fileID: 11400000, guid: a9a6fd99535cf7e499cc8b3bb53e4334, type: 2}
+  - {fileID: 11400000, guid: 591887b2e05b1fa40a1f933fdbff5fc9, type: 2}
+  - {fileID: 11400000, guid: c44a122271f85df4fbc82162b7313485, type: 2}
+  - {fileID: 11400000, guid: 7b3b5694120ba2642a3d5f39341f036d, type: 2}
