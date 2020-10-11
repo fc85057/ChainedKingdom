@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67241a8a5538db74382041b2881cccbf, type: 3}
+  m_Name: TavernDemandNoTavern1
+  m_EditorClassIdentifier: 
+  Prerequisite: 3
+  Minimum: 2
+  OutcomeType: 7
+  OutcomeNumber: 1
+  OutcomeText: You decide against opening a new tavern.\\nSome of the townsfolk are
+    displeased by this decision.\\nOne of them in particular grows bored of life here.\\nOne
+    of our workers decides to move to a kingdom with beer.

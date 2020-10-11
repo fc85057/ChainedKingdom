@@ -64,6 +64,7 @@
   <ItemGroup>
     <Compile Include="Assets\Scripts\ChainManager.cs" />
     <Compile Include="Assets\Scripts\GameManager.cs" />
+    <Compile Include="Assets\Scripts\Outcome.cs" />
     <Compile Include="Assets\Scripts\ResourceManager.cs" />
     <Compile Include="Assets\Scripts\Scenario.cs" />
     <Compile Include="Assets\Scripts\UIManager.cs" />

@@ -132,7 +132,7 @@ GameObject:
   - component: {fileID: 29605288}
   - component: {fileID: 29605287}
   m_Layer: 0
-  m_Name: Text
+  m_Name: ChoiceTwoText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7315,7 +7315,7 @@ GameObject:
   - component: {fileID: 706215049}
   - component: {fileID: 706215048}
   m_Layer: 0
-  m_Name: Text
+  m_Name: ChoiceOneText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -13407,6 +13407,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 57b1b9fe056924c4bba05ea9ee3814eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  choicePanel: {fileID: 1119004050}
+  outcomePanel: {fileID: 74413378}
+  scenarios:
+  - {fileID: 11400000, guid: b2a84cb9acd6278428a6f672ccc17a65, type: 2}
+  - {fileID: 11400000, guid: b1cc667ed1c3a1a4dab5834eba3a17d4, type: 2}
+  scenarioText: {fileID: 177889930}
+  choiceOneText: {fileID: 706215048}
+  choiceTwoText: {fileID: 29605287}
+  chanceOfWar: 40
+  warScenario: {fileID: 11400000, guid: fb659f6fc367fe040a8196ee7123a68e, type: 2}
+  outcomeText: {fileID: 2001355326}
 --- !u!114 &1322393844
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14666,13 +14677,13 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1322393844}
-        m_MethodName: LoadMainMenu
-        m_Mode: 1
+      - m_Target: {fileID: 1322393843}
+        m_MethodName: HandleOutcome
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 2
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -14729,7 +14740,7 @@ GameObject:
   - component: {fileID: 1853932510}
   - component: {fileID: 1853932509}
   m_Layer: 0
-  m_Name: SecondChoiceButton
+  m_Name: ConfirmButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -14798,8 +14809,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1322393844}
-        m_MethodName: LoadMainMenu
+      - m_Target: {fileID: 1322393843}
+        m_MethodName: ConcludeScenario
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -15281,13 +15292,13 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1322393844}
-        m_MethodName: Pause
-        m_Mode: 1
+      - m_Target: {fileID: 1322393843}
+        m_MethodName: HandleOutcome
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 1
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0

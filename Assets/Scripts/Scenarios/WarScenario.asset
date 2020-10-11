@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fbf35b6983fd470458d7a9a8de827680, type: 3}
+  m_Name: WarScenario
+  m_EditorClassIdentifier: 
+  Prerequisite: 7
+  Minimum: 0
+  ScenarioText: The enemy approaches! What shall we do?
+  ChoiceOneText: They'll never take our freedom! (Fight)
+  ChoiceTwoText: I'm a pacifist. (Get Ransacked)
+  ChoiceOneOutcomes:
+  - {fileID: 11400000, guid: 85304dd029a897848943d70a36adeb58, type: 2}
+  - {fileID: 11400000, guid: d8554b26702ea0d47aa7f0237c59d8d0, type: 2}
+  ChoiceTwoOutcomes:
+  - {fileID: 11400000, guid: 435e5a7238112bf4b9b56ae3674666e0, type: 2}

@@ -2,17 +2,21 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Scenario : MonoBehaviour
-{
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+public enum PrerequisiteEnum { MinFood, MinGold, MinEquipment, MinPopulation,
+MinFarmer, MinMerchant, MinBlacksmith, MinSoldier, MinIdle}
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+[CreateAssetMenu(fileName = "NewScenario", menuName = "New Scenario")]
+public class Scenario : ScriptableObject
+{
+
+    [SerializeField] public PrerequisiteEnum Prerequisite;
+    [SerializeField] public int Minimum;
+
+    [SerializeField] public string ScenarioText;
+    [SerializeField] public string ChoiceOneText;
+    [SerializeField] public string ChoiceTwoText;
+
+    [SerializeField] public Outcome[] ChoiceOneOutcomes;
+    [SerializeField] public Outcome[] ChoiceTwoOutcomes;
+
 }

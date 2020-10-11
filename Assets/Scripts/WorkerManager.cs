@@ -139,7 +139,7 @@ public class WorkerManager : MonoBehaviour
         }
     }
 
-    void IncreasePopulation(int amount)
+    public void IncreasePopulation(int amount)
     {
         population += amount;
         idle += amount;
@@ -147,7 +147,7 @@ public class WorkerManager : MonoBehaviour
         OnIdleChanged(idle);
     }
 
-    void DecreasePopulation(int amount)
+    public void DecreasePopulation(int amount)
     {
         population -= amount;
         OnPopulationChanged(population);

@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fbf35b6983fd470458d7a9a8de827680, type: 3}
+  m_Name: DrunkBlacksmith
+  m_EditorClassIdentifier: 
+  Prerequisite: 6
+  Minimum: 1
+  ScenarioText: One of the blacksmiths got really drunk and got into a bar brawl.
+    What shall we do with him?
+  ChoiceOneText: Put him in the stocks!
+  ChoiceTwoText: It could have happened to anyone.
+  ChoiceOneOutcomes:
+  - {fileID: 11400000, guid: ab76cbf081727254ab7db30c7cbe5b66, type: 2}
+  ChoiceTwoOutcomes:
+  - {fileID: 11400000, guid: 2a38e66043c73b54e9ed63d82de687aa, type: 2}

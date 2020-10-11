@@ -121,6 +121,21 @@ public class ResourceManager : MonoBehaviour
         }
     }
 
+    public void AddFood(int amount)
+    {
+        food += amount;
+        OnFoodChanged(food);
+        // need to see if thread safety is an issue
+    }
+
+    public void RemoveFood(int amount)
+    {
+        food -= amount;
+        if (food < 0)
+            food = 0;
+        OnFoodChanged(food);
+    }
+
     #endregion
 
     #region Gold
@@ -137,6 +152,22 @@ public class ResourceManager : MonoBehaviour
             OnGoldChanged(gold);
             yield return new WaitForSeconds(goldCalculationInterval);
         }
+    }
+
+    public void AddGold(int amount)
+    {
+        gold += amount;
+        OnGoldChanged(gold);
+        // thread safety
+    }
+
+    public void RemoveGold(int amount)
+    {
+        gold -= amount;
+        if (gold < 0)
+            gold = 0;
+        OnGoldChanged(gold);
+        // thread safety
     }
 
     #endregion
@@ -156,6 +187,22 @@ public class ResourceManager : MonoBehaviour
             yield return new WaitForSeconds(equipmentCalculationInterval);
         }
 
+    }
+
+    public void AddEquipment(int amount)
+    {
+        equipment += amount;
+        OnEquipmentChanged(equipment);
+        // thread safety
+    }
+
+    public void RemoveEquipment(int amount)
+    {
+        equipment -= amount;
+        if (equipment < 0)
+            equipment = 0;
+        OnEquipmentChanged(equipment);
+        // thread safety
     }
 
     #endregion
