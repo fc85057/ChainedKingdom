@@ -136,7 +136,7 @@ public class ChainManager : MonoBehaviour
 
     void HandleOnYearChanged(int year)
     {
-        // if (year == 1) return;
+        if (year == 1) return;
         UpdateYear(year);
         currentScenario = DrawScenario();
         HandleScenario();
@@ -246,7 +246,8 @@ public class ChainManager : MonoBehaviour
             return;
         }
 
-        int enemySoldiers = (int)(year / 2.0f + 1);
+        int enemySoldiers = (int)(year / 2.0f);
+        if (enemySoldiers < 1) enemySoldiers = 1;
         Debug.Log("The number of enemy soldiers is " + enemySoldiers.ToString());
         if (soldiers >= enemySoldiers)
         {
@@ -260,23 +261,24 @@ public class ChainManager : MonoBehaviour
 
     void LoseAllResources()
     {
-        outcomeText.text = "You decided to fight.\n" +
-            "It was the shortest battle in history since...we don't have an army.\n" +
+        outcomeText.text = @"You decided to fight.\n" +
+            "It was the shortest battle in history since we don't have an army.\n" +
             "The enemy storms their way throughout the kingdom. " +
             "They take everything that isn't nailed down.\n" +
             "Actually, even some of the stuff that was nailed down.";
         choicePanel.SetActive(false);
         outcomePanel.SetActive(true);
-        resourceManager.RemoveGold(100);
-        resourceManager.RemoveEquipment(100);
+        resourceManager.RemoveGold(Random.Range(gold / 2, gold));
+        resourceManager.RemoveEquipment(Random.Range(equipment / 2, equipment));
+        resourceManager.RemoveFood(food / 2);
     }
 
     void WinWar()
     {
         outcomeText.text = "You decided to fight.\n" +
-            "Our soldiers put up a valiant effort." +
-            "The enemy is no match for our army." +
-            "In other words, we kicked their ass." +
+            "Our soldiers put up a valiant effort. " +
+            "The enemy is no match for our army.\n" +
+            "In other words, we kicked their ass.\n" +
             "We live to fight another day.";
         choicePanel.SetActive(false);
         outcomePanel.SetActive(true);
@@ -284,14 +286,17 @@ public class ChainManager : MonoBehaviour
 
     void LoseWar()
     {
-        int soldiersLost = Random.Range(1, soldiers);
+        int soldiersLost = Random.Range(1, (soldiers + 1) / 2);
         outcomeText.text = "You decided to fight.\n" +
-            "Our soldiers fought as hard as they could." +
-            "Alas, the enemy was just too strong." +
-            "In other words, we got our ass handed to us." +
-            soldiersLost + " of our soldiers died.";
+            "Alas, the enemy was just too strong. " +
+            "In other words, we got our ass handed to us.\n" +
+            soldiersLost + " of our soldiers died.\n" +
+            "The enemy proceeded to raid our supplies.";
         workerManager.RemoveSoldier(soldiersLost);
         workerManager.DecreasePopulation(soldiersLost);
+        resourceManager.RemoveGold(gold / 2); // calculate something better here
+        resourceManager.RemoveEquipment(equipment / 2); // calculate something better here
+        resourceManager.RemoveFood(food / 3);
         choicePanel.SetActive(false);
         outcomePanel.SetActive(true);
     }
@@ -301,7 +306,17 @@ public class ChainManager : MonoBehaviour
 
     void DontFight()
     {
-        DrawOutcome(2);
+        // DrawOutcome(2); Could still use this or turn back on
+        outcomeText.text = "You decided not to fight.\n" +
+            "The enemy makes their way throughout town.\n" +
+            "They cause widespread destruction along the way.\n" +
+            "Resources and workers are lost.";
+        // workerManager.DecreasePopulation(population / 5);
+        resourceManager.RemoveGold(gold / 2);
+        resourceManager.RemoveEquipment(equipment / 2);
+        resourceManager.RemoveFood((int)(food * 0.75f));
+        choicePanel.SetActive(false);
+        outcomePanel.SetActive(true);
     }
 
     #endregion

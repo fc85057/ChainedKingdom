@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fbf35b6983fd470458d7a9a8de827680, type: 3}
+  m_Name: HuntingSoldiers
+  m_EditorClassIdentifier: 
+  Prerequisite: 7
+  Minimum: 1
+  ScenarioText: We've found some of the soldiers out hunting game when they should
+    have been training. What shall we do?
+  ChoiceOneText: Let the men hunt.
+  ChoiceTwoText: What!? Back to work!
+  ChoiceOneOutcomes:
+  - {fileID: 11400000, guid: 7f946caea9e3cf14183b60982df5e37e, type: 2}
+  - {fileID: 11400000, guid: 4f731329fa20d664c9e0328da96894a2, type: 2}
+  ChoiceTwoOutcomes:
+  - {fileID: 11400000, guid: d43f93010d457cf4c86861e901457cc8, type: 2}
+  - {fileID: 11400000, guid: 6871352f61720af4486d36608cd0b06f, type: 2}

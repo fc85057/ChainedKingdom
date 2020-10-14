@@ -15,6 +15,7 @@ public class WorkerManager : MonoBehaviour
     public static event Action<int> OnSoldiersChanged = delegate { };
 
     [SerializeField] int startingPopulation = 10;
+    [SerializeField] int foodForGrowth = 100;
     [SerializeField] float increasePopulationInterval = 15f;
     [SerializeField] float decreasePopulationInterval = 5f;
 
@@ -71,7 +72,7 @@ public class WorkerManager : MonoBehaviour
             StopCoroutine(GraduallyIncreasePopulation());
             StartCoroutine(GraduallyDecreasePopulation());
         }
-        else if (food > 100 && !populationChanging)
+        else if (food > foodForGrowth && !populationChanging)
         {
             Debug.Log("Calling increasing population");
             populationChanging = true;
