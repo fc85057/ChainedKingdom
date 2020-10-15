@@ -9,9 +9,11 @@ public class GameManager : MonoBehaviour
     public static event Action<int> OnYearChanged = delegate { };
 
     [SerializeField] float yearDuration = 60f;
+    [SerializeField] int winYear;
 
     [SerializeField] GameObject gameOverScreen;
     [SerializeField] GameObject pauseScreen;
+    [SerializeField] GameObject winScreen;
 
     int year;
     bool gameOver;
@@ -47,7 +49,8 @@ public class GameManager : MonoBehaviour
     {
         if (population < 1 && !gameOver)
         {
-            StartCoroutine(GameOver());
+            //StartCoroutine(GameOver());
+            GameOver();
         }
     }
 
@@ -56,12 +59,35 @@ public class GameManager : MonoBehaviour
         while (true)
         {
             year++;
-            OnYearChanged(year);
-            yield return new WaitForSeconds(yearDuration);
+            if (year == winYear)
+            {
+                WinGame();
+            }
+            else
+            {
+                OnYearChanged(year);
+                yield return new WaitForSeconds(yearDuration);
+            }
+            
         }
 
     }
 
+    void WinGame()
+    {
+        winScreen.SetActive(true);
+        Time.timeScale = 0;
+    }
+
+    void GameOver()
+    {
+        gameOver = true;
+        gameOverScreen.SetActive(true);
+        Time.timeScale = 0;
+        Debug.Log("Game over");
+    }
+
+    /*
     IEnumerator GameOver()
     {
         gameOver = true;
@@ -70,6 +96,7 @@ public class GameManager : MonoBehaviour
         yield return new WaitForSeconds(5f);
         LoadMainMenu();
     }
+    */
 
     public void Pause()
     {

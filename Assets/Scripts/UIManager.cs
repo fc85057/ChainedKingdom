@@ -24,6 +24,11 @@ public class UIManager : MonoBehaviour
     [SerializeField] GameObject blacksmith;
     [SerializeField] GameObject soldier;
 
+    [SerializeField] Image happinessGraphic;
+    [SerializeField] Sprite happyGraphic;
+    [SerializeField] Sprite neutralGraphic;
+    [SerializeField] Sprite unhappyGraphic;
+
     private void Awake()
     {
         GameManager.OnYearChanged += ChangeYearText;
@@ -36,6 +41,7 @@ public class UIManager : MonoBehaviour
         WorkerManager.OnBlacksmithsChanged += ChangeBlacksmithText;
         WorkerManager.OnSoldiersChanged += ChangeSoldierText;
 
+        ResourceManager.OnHappinessChanged += SetHappinessGraphic;
         ResourceManager.OnFoodChanged += ChangeFoodText;
         ResourceManager.OnGoldChanged += ChangeGoldText;
         ResourceManager.OnEquipmentChanged += ChangeEquipmentText;
@@ -53,6 +59,7 @@ public class UIManager : MonoBehaviour
         WorkerManager.OnBlacksmithsChanged -= ChangeBlacksmithText;
         WorkerManager.OnSoldiersChanged -= ChangeSoldierText;
 
+        ResourceManager.OnHappinessChanged -= SetHappinessGraphic;
         ResourceManager.OnFoodChanged -= ChangeFoodText;
         ResourceManager.OnGoldChanged -= ChangeGoldText;
         ResourceManager.OnEquipmentChanged -= ChangeEquipmentText;
@@ -110,6 +117,22 @@ public class UIManager : MonoBehaviour
     {
         soldierText.text = amount.ToString();
         SetWorkerGraphic(soldier, amount);
+    }
+
+    void SetHappinessGraphic(Happiness happiness)
+    {
+        switch(happiness)
+        {
+            case (Happiness.Happy):
+                happinessGraphic.sprite = happyGraphic;
+                break;
+            case (Happiness.Neutral):
+                happinessGraphic.sprite = neutralGraphic;
+                break;
+            case (Happiness.Unhappy):
+                happinessGraphic.sprite = unhappyGraphic;
+                break;
+        }
     }
 
     void SetWorkerGraphic(GameObject worker, int number)

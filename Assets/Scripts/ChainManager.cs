@@ -246,7 +246,7 @@ public class ChainManager : MonoBehaviour
             return;
         }
 
-        int enemySoldiers = (int)(year / 2.0f);
+        int enemySoldiers = (int)(year / 3.0f);
         if (enemySoldiers < 1) enemySoldiers = 1;
         Debug.Log("The number of enemy soldiers is " + enemySoldiers.ToString());
         if (soldiers >= enemySoldiers)
@@ -261,16 +261,21 @@ public class ChainManager : MonoBehaviour
 
     void LoseAllResources()
     {
-        outcomeText.text = @"You decided to fight.\n" +
+        outcomeText.text = "You decided to fight.\n" +
             "It was the shortest battle in history since we don't have an army.\n" +
             "The enemy storms their way throughout the kingdom. " +
             "They take everything that isn't nailed down.\n" +
             "Actually, even some of the stuff that was nailed down.";
+
+        //resourceManager.RemoveGold(Random.Range(gold / 2, gold));
+        //resourceManager.RemoveEquipment(Random.Range(equipment / 2, equipment));
+        //resourceManager.RemoveFood(food / 2);
+        resourceManager.RemoveGold(Random.Range(gold / 3, (int)(gold * 0.75f)));
+        resourceManager.RemoveEquipment(Random.Range(equipment / 3, (int)(equipment * 0.75f)));
+        resourceManager.RemoveFood(Random.Range(food / 3, (int)(food * 0.75f)));
+
         choicePanel.SetActive(false);
         outcomePanel.SetActive(true);
-        resourceManager.RemoveGold(Random.Range(gold / 2, gold));
-        resourceManager.RemoveEquipment(Random.Range(equipment / 2, equipment));
-        resourceManager.RemoveFood(food / 2);
     }
 
     void WinWar()
@@ -280,6 +285,7 @@ public class ChainManager : MonoBehaviour
             "The enemy is no match for our army.\n" +
             "In other words, we kicked their ass.\n" +
             "We live to fight another day.";
+
         choicePanel.SetActive(false);
         outcomePanel.SetActive(true);
     }
@@ -288,15 +294,18 @@ public class ChainManager : MonoBehaviour
     {
         int soldiersLost = Random.Range(1, (soldiers + 1) / 2);
         outcomeText.text = "You decided to fight.\n" +
-            "Alas, the enemy was just too strong. " +
+            "Our soldiers marched bravely towards the foe." +
+            "Alas, the enemy was just too strong.\n" +
             "In other words, we got our ass handed to us.\n" +
-            soldiersLost + " of our soldiers died.\n" +
-            "The enemy proceeded to raid our supplies.";
+            soldiersLost + " of our soldiers died.";
+
         workerManager.RemoveSoldier(soldiersLost);
         workerManager.DecreasePopulation(soldiersLost);
-        resourceManager.RemoveGold(gold / 2); // calculate something better here
-        resourceManager.RemoveEquipment(equipment / 2); // calculate something better here
-        resourceManager.RemoveFood(food / 3);
+
+        // resourceManager.RemoveGold(gold / 2); // calculate something better here
+        // resourceManager.RemoveEquipment(equipment / 2); // calculate something better here
+        // resourceManager.RemoveFood(food / 3);
+
         choicePanel.SetActive(false);
         outcomePanel.SetActive(true);
     }
@@ -309,12 +318,12 @@ public class ChainManager : MonoBehaviour
         // DrawOutcome(2); Could still use this or turn back on
         outcomeText.text = "You decided not to fight.\n" +
             "The enemy makes their way throughout town.\n" +
-            "They cause widespread destruction along the way.\n" +
-            "Resources and workers are lost.";
+            "Laughing at our workers, they cause widespread destruction along the way.\n" +
+            "Our supplies are raided.";
         // workerManager.DecreasePopulation(population / 5);
-        resourceManager.RemoveGold(gold / 2);
-        resourceManager.RemoveEquipment(equipment / 2);
-        resourceManager.RemoveFood((int)(food * 0.75f));
+        resourceManager.RemoveGold(Random.Range(gold / 3, (int)(gold * 0.75f)));
+        resourceManager.RemoveEquipment(Random.Range(equipment / 3, (int)(equipment * 0.75f)));
+        resourceManager.RemoveFood(Random.Range(food / 3, (int)(food * 0.75f)));
         choicePanel.SetActive(false);
         outcomePanel.SetActive(true);
     }

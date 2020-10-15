@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fbf35b6983fd470458d7a9a8de827680, type: 3}
+  m_Name: Plague
+  m_EditorClassIdentifier: 
+  Prerequisite: 4
+  Minimum: 1
+  ScenarioText: One of the farmer's spouses appears to have caught the plague. What
+    shall we do?
+  ChoiceOneText: Treat them
+  ChoiceTwoText: Exile them
+  ChoiceOneOutcomes:
+  - {fileID: 11400000, guid: 4386cb4328d9de14da336a9c27fe72f4, type: 2}
+  - {fileID: 11400000, guid: 93e81f7db0b099843b66c3c67dc09df6, type: 2}
+  ChoiceTwoOutcomes:
+  - {fileID: 11400000, guid: 77abf767f9f27c747aa6aabdbff637c3, type: 2}
+  - {fileID: 11400000, guid: 8a78b6da6a659454b9bdc49b6c6c8bb1, type: 2}

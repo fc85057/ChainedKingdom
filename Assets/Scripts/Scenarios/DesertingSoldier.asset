@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fbf35b6983fd470458d7a9a8de827680, type: 3}
+  m_Name: DesertingSoldier
+  m_EditorClassIdentifier: 
+  Prerequisite: 7
+  Minimum: 2
+  ScenarioText: One of the soldiers has been found trying to desert the army. What
+    shall we do?
+  ChoiceOneText: Flog him in public!
+  ChoiceTwoText: Discretly toss him in a cell
+  ChoiceOneOutcomes:
+  - {fileID: 11400000, guid: dcba963fc3e4ca84da7c31afe5e70fd7, type: 2}
+  - {fileID: 11400000, guid: 67f0b3fa3e6eee64eb5ec6e9daef6c28, type: 2}
+  ChoiceTwoOutcomes:
+  - {fileID: 11400000, guid: 646bbc929db939942bdf1cbdcc94ebc1, type: 2}
+  - {fileID: 11400000, guid: f766f65d8fc11e949833b010bf5897d8, type: 2}

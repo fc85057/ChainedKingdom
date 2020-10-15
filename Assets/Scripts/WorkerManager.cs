@@ -34,6 +34,8 @@ public class WorkerManager : MonoBehaviour
     private void Awake()
     {
         WorkerButton.OnWorkerChanged += HandleOnWorkerChanged;
+
+        ResourceManager.OnHappinessChanged += SetPopulationGrowth; // happiness
         ResourceManager.OnFoodChanged += UpdateFood;
         ResourceManager.OnGoldChanged += UpdateGold;
         ResourceManager.OnEquipmentChanged += UpdateEquipment;
@@ -57,11 +59,15 @@ public class WorkerManager : MonoBehaviour
     private void OnDestroy()
     {
         WorkerButton.OnWorkerChanged -= HandleOnWorkerChanged;
+
+        ResourceManager.OnHappinessChanged -= SetPopulationGrowth; // happiness
         ResourceManager.OnFoodChanged -= UpdateFood;
+        ResourceManager.OnGoldChanged -= UpdateGold;
+        ResourceManager.OnEquipmentChanged -= UpdateEquipment;
     }
 
     #region Food
-
+    /*
     private void UpdateFood(int amount)
     {
         food = amount;
@@ -88,12 +94,17 @@ public class WorkerManager : MonoBehaviour
         }
 
     }
+    */
+    private void UpdateFood(int amount)
+    {
+        food = amount;
+    }
 
-    #endregion
+        #endregion
 
     #region Gold
 
-    void UpdateGold(int amount)
+        void UpdateGold(int amount)
     {
         gold = amount;
         if (gold < 1)
@@ -118,6 +129,56 @@ public class WorkerManager : MonoBehaviour
     #endregion
 
     #region Population
+
+    // happiness
+    void SetPopulationGrowth(Happiness happiness)
+    {
+        if (Time.time < 1f) return;
+
+        if (happiness == Happiness.Happy && !populationChanging)
+        {
+            Debug.Log("Happy so increasing population");
+            populationChanging = true;
+            StopCoroutine(GraduallyDecreasePopulation());
+            StartCoroutine(GraduallyIncreasePopulation());
+        }
+        else if (happiness == Happiness.Unhappy && !populationChanging)
+        {
+            Debug.Log("Unhappy so decreasing population");
+            populationChanging = true;
+            StopCoroutine(GraduallyIncreasePopulation());
+            StartCoroutine(GraduallyDecreasePopulation());
+        }
+        else if (happiness == Happiness.Neutral && populationChanging)
+        {
+            Debug.Log("Happiness neutral, stopping population decline/growth.");
+            populationChanging = false;
+            StopAllCoroutines();
+        }
+
+        /* using siwtch statement for happiness does not consider changing population
+        switch(happiness)
+        {
+            case (Happiness.Happy):
+                Debug.Log("Happy so increasing population");
+                populationChanging = true;
+                StopCoroutine(GraduallyDecreasePopulation());
+                StartCoroutine(GraduallyIncreasePopulation());
+                break;
+            case (Happiness.Unhappy):
+                Debug.Log("Unhappy so decreasing population");
+                populationChanging = true;
+                StopCoroutine(GraduallyIncreasePopulation());
+                StartCoroutine(GraduallyDecreasePopulation());
+                break;
+            case (Happiness.Neutral):
+                Debug.Log("Happiness neutral, stopping population decline/growth.");
+                populationChanging = false;
+                StopAllCoroutines();
+                break;
+        }
+        */
+    }
 
     IEnumerator GraduallyIncreasePopulation()
     {

@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67241a8a5538db74382041b2881cccbf, type: 3}
+  m_Name: PlagueExile1
+  m_EditorClassIdentifier: 
+  Prerequisite: 0
+  Minimum: 1
+  OutcomeType: 1
+  OutcomeNumber: 20
+  OutcomeText: 'You decide to exile the farmer''s spouse.
+
+    They wander off into the wilderness all alone.
+
+    They join a community in the woods of other ill, shunned people.
+
+    The sympathetic farmers start providing food to the ill. Our supply decreases.'

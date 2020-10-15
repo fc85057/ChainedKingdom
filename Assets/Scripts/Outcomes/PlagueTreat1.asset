@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67241a8a5538db74382041b2881cccbf, type: 3}
+  m_Name: PlagueTreat1
+  m_EditorClassIdentifier: 
+  Prerequisite: 1
+  Minimum: 1
+  OutcomeType: 3
+  OutcomeNumber: 15
+  OutcomeText: 'You decide to treat the farmer''s spouse.
+
+    The local physicians begin their attempts at treatment.
+
+    They do not prove fruitful and physicians outside the kingdom are called in.
+
+    While their attempts are successful, it proves costly.'
